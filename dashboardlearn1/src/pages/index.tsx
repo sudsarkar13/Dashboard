@@ -15,7 +15,7 @@ export default function Home() {
 					Welcome to Dashboard
 				</h1>
 				<div className="flex justify-center">
-					<Button variant={"secondary"}>Click Me</Button>
+					<Button>Click Me</Button>
 				</div>
 			</div>
 		</main>
