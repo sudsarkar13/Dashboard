@@ -1,14 +1,14 @@
-import { ubuntu } from "@/font/Font";
+import Image from "next/image";
+import { ubuntuMono } from "@/types/font/Font";
 
 export default function Home() {
-	return (
-		<main
-			className={`min-h-screen ${ubuntu.className}`}
-		>
-			{/* <div className='z-10 max-w-5xl w-full items-center justify-between font-mono text-sm'> */}
-			<div className='font-mono'>
-				<h1 className='text-center text-2xl'>Welcome to the dashboard</h1>
-			</div>
-		</main>
-	);
+  return (
+    <main
+      className={`min-h-screen ${ubuntuMono.className}`}
+    >
+      <div className={``}>
+        <h1 className="text-2xl text-center font-[600]">Welcome to Dashboard</h1>
+      </div>
+    </main>
+  );
 }
