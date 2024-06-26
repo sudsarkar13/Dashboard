@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,11 +11,16 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Head from "next/head";
+import Link from "next/link";
 
 const Login: React.FC = () => {
 	return (
 		<main>
-			<div className="flex min-h-screen items-center justify-center">
+			<Head>
+				<title>Dashboard | Login</title>
+			</Head>
+			<div className='flex min-h-screen items-center justify-center'>
 				<Card className='w-full max-w-sm'>
 					<CardHeader>
 						<CardTitle className='text-2xl'>Login</CardTitle>
@@ -38,7 +44,15 @@ const Login: React.FC = () => {
 						</div>
 					</CardContent>
 					<CardFooter>
-						<Button className='w-full'>Sign in</Button>
+						<div className="w-full">
+							<Button className='w-full'>Sign in</Button>
+							<div className='mt-4 text-center text-sm'>
+								Don't have an account?{" "}
+								<Link href='/register' className='underline'>
+									Register here
+								</Link>
+							</div>
+						</div>
 					</CardFooter>
 				</Card>
 			</div>
