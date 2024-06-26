@@ -1,0 +1,11 @@
+# Formatting command
+
+npx prettier . --write
+or
+prettier . --write
+
+## Checking for unformatted files
+
+npx prettier . --check
+or
+prettier . --check
