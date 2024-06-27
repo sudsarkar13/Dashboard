@@ -223,3 +223,21 @@ export default function Home() {
 }
 
 ```
+
+### Prettier code formatter
+
+Formatting command:
+
+```
+npx prettier . --write
+or
+prettier . --write		---use this only if prettier is installed locally inside the project or globally inside node environment.
+```
+
+Checking command for unformatted files:
+
+```
+npx prettier . --check
+or
+prettier . --check		---use this only if prettier is installed locally inside the project or globally inside node environment.
+```
