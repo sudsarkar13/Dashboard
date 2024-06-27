@@ -228,16 +228,18 @@ export default function Home() {
 
 Formatting command:
 
-```
+```sh
 npx prettier . --write
 or
-prettier . --write		---use this only if prettier is installed locally inside the project or globally inside node environment.
+prettier . --write		---use this only if prettier is installed locally inside the
+ project or globally inside node environment.
 ```
 
 Checking command for unformatted files:
 
-```
+```sh
 npx prettier . --check
 or
-prettier . --check		---use this only if prettier is installed locally inside the project or globally inside node environment.
+prettier . --check		---use this only if prettier is installed locally inside the
+ project or globally inside node environment.
 ```
