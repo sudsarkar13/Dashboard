@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
 	Bell,
+	BookA,
 	CircleUser,
 	Home,
 	LineChart,
@@ -35,12 +36,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Inventory from "./Inventory";
 
 interface Props {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }: Props) => {
 	return (
-		<main className="">
+		<main className=''>
 			<div>
 				<div className='grid h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]'>
 					<div className='hidden border-r bg-muted/40 md:block'>
@@ -51,7 +52,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 									className='flex items-center gap-2 font-semibold'
 								>
 									<Package2 className='h-6 w-6' />
-									<span className=''>Acme Inc</span>
+									<span className=''>Coder's Book</span>
 								</Link>
 								<Button
 									variant='outline'
@@ -69,38 +70,14 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 										className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
 									>
 										<Home className='h-4 w-4' />
-										Dashboard
-									</Link>
-									<Link
-										href='#'
-										className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-									>
-										<ShoppingCart className='h-4 w-4' />
-										Orders
-										<Badge className='ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full'>
-											6
-										</Badge>
+										Dashboard Overview
 									</Link>
 									<Link
 										href='#'
 										className='flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary'
 									>
-										<Package className='h-4 w-4' />
-										Products{" "}
-									</Link>
-									<Link
-										href='#'
-										className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-									>
-										<Users className='h-4 w-4' />
-										Customers
-									</Link>
-									<Link
-										href='#'
-										className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-									>
-										<LineChart className='h-4 w-4' />
-										Analytics
+										<BookA className='h-4 w-4' />
+										Books
 									</Link>
 								</nav>
 							</div>
@@ -142,45 +119,21 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 											className='flex items-center gap-2 text-lg font-semibold'
 										>
 											<Package2 className='h-6 w-6' />
-											<span className='sr-only'>Acme Inc</span>
+											<span className='sr-only'>Coder's Book</span>
 										</Link>
 										<Link
 											href='#'
 											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
 										>
 											<Home className='h-5 w-5' />
-											Dashboard
-										</Link>
-										<Link
-											href='#'
-											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground'
-										>
-											<ShoppingCart className='h-5 w-5' />
-											Orders
-											<Badge className='ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full'>
-												6
-											</Badge>
+											Dashboard Overview
 										</Link>
 										<Link
 											href='#'
 											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
 										>
-											<Package className='h-5 w-5' />
-											Products
-										</Link>
-										<Link
-											href='#'
-											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
-										>
-											<Users className='h-5 w-5' />
-											Customers
-										</Link>
-										<Link
-											href='#'
-											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
-										>
-											<LineChart className='h-5 w-5' />
-											Analytics
+											<BookA className='h-4 w-4' />
+											Books
 										</Link>
 									</nav>
 									<div className='mt-auto'>
@@ -220,7 +173,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 										size='icon'
 										className='rounded-full'
 									>
-										<CircleUser className='h-5 w-5' />
+										<CircleUser className='h-8 w-8' />
 										<span className='sr-only'>Toggle user menu</span>
 									</Button>
 								</DropdownMenuTrigger>
@@ -240,6 +193,6 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 			</div>
 		</main>
 	);
-}
+};
 
 export default Layout;
