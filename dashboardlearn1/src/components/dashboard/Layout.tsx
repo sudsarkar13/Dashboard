@@ -66,14 +66,14 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 							<div className='flex-1'>
 								<nav className='grid items-start px-2 text-sm font-medium lg:px-4'>
 									<Link
-										href='#'
+										href='/dashboard/home'
 										className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
 									>
 										<Home className='h-4 w-4' />
 										Dashboard Overview
 									</Link>
 									<Link
-										href='#'
+										href='/dashboard/books'
 										className='flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary'
 									>
 										<BookA className='h-4 w-4' />
@@ -122,14 +122,14 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 											<span className='sr-only'>Coder's Book</span>
 										</Link>
 										<Link
-											href='#'
+											href='/dashboard/home'
 											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
 										>
 											<Home className='h-5 w-5' />
 											Dashboard Overview
 										</Link>
 										<Link
-											href='#'
+											href='/dashboard/books'
 											className='mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
 										>
 											<BookA className='h-4 w-4' />
