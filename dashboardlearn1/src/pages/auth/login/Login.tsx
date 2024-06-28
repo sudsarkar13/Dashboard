@@ -48,7 +48,7 @@ const Login: React.FC = () => {
               <Button className="w-full">Sign in</Button>
               <div className="mt-4 text-center text-sm">
                 Don't have an account?{" "}
-                <Link href="/register" className="underline">
+                <Link href="/auth/register" className="underline">
                   Register here
                 </Link>
               </div>
