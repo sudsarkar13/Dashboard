@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { ubuntuMono as fontSans } from "@/types/font/Font";
+import { ubuntu as fontSans } from "@/types/font/Font";
 import { cn } from "@/lib/utils";
 
 export default function Document() {
