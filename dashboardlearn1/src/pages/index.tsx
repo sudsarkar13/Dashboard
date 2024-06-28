@@ -1,6 +1,6 @@
 import { ubuntuMono } from "@/types/font/Font";
 import Head from "next/head";
-import { Inventory } from '@/components/dashboard';
+import { Inventory } from "@/components/dashboard";
 
 export default function HomePage() {
 	return (
@@ -11,8 +11,8 @@ export default function HomePage() {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 			</Head>
 			<div>
-        <Inventory />
+				<Inventory />
 			</div>
 		</main>
-	)
+	);
 }
