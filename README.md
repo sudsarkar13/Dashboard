@@ -1,8 +1,8 @@
 # Dashboard
 
-## Dashboard Learn 1(dashboardlearn1)
+## NextJS + Shadcn/UI Project Setup
 
-Setting up first learning dashboard with `NextJS`:
+Setting up the project with `NextJS`:
 
 ```sh
 npx create-next-app@latest my-app --typescript --tailwind --eslint
@@ -231,7 +231,7 @@ Formatting command:
 ```sh
 npx prettier . --write
 or
-prettier . --write		---use this only if prettier is installed locally inside the
+prettier . --write  ---use this only if prettier is installed locally inside the
  project or globally inside node environment.
 ```
 
@@ -240,6 +240,6 @@ Checking command for unformatted files:
 ```sh
 npx prettier . --check
 or
-prettier . --check		---use this only if prettier is installed locally inside the
+prettier . --check  ---use this only if prettier is installed locally inside the
  project or globally inside node environment.
 ```

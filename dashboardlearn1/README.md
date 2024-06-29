@@ -1,40 +1,251 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DASHBOARDLEARN1
 
-## Getting Started
+This folder contains the frontend and backend folders of the project.
 
-First, run the development server:
+## Ebook Library Frontend
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Setting up first learning dashboard with `NextJS`:
+
+```sh
+npx create-next-app@latest my-app --typescript --tailwind --eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After configuring the nextjs app settings these following processes will occur automatically.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```sh
+✔ Would you like to use `src/` directory? … No / Yes
+✔ Would you like to use App Router? (recommended) … No / Yes
+✔ Would you like to customize the default import alias (@/*)? … No / Yes
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Creating a new Next.js app in /DIR
+Using npm.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Initializing project with template: default-tw 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+Installing dependencies:
+- react
+- react-dom
+- next
 
-To learn more about Next.js, take a look at the following resources:
+Installing devDependencies:
+- typescript
+- @types/node
+- @types/react
+- @types/react-dom
+- postcss
+- tailwindcss
+- eslint
+- eslint-config-next
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+--Example Data
+added 361 packages, and audited 362 packages in 2m
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+137 packages are looking for funding
+  run `npm fund` for details
 
-## Deploy on Vercel
+found 0 vulnerabilities
+Success! Created my-app at /DIR
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Now setting up `Shadcn/UI` with configuration template
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+npx shadcn-ui@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+Follow the given exact methods to sucessfully configure the app
+
+```sh
+✔ Which style would you like to use? › Default
+✔ Which color would you like to use as base color? › Neutral
+✔ Would you like to use CSS variables for colors? … no / yes
+
+✔ Writing components.json...
+✔ Initializing project...
+✔ Installing dependencies...
+
+Success! Project initialization completed. You may now add components.
+```
+
+### Fonts
+
+Now we need to setup out font style inside the project, as I love the `Ubuntu Mono` font style, I will be providing an example to setup `next/font/google` in your `nextjs` app.
+
+1. Create a `types` folder inside `src` or in your `project directory`.
+
+As I am not using `App Router` instead using `src` as directory alias, the folder structure should be like this `src/types`.
+
+2. In `src/types` create afile `font.ts`
+
+And paste the following code:
+
+```ts
+import { Ubuntu, Ubuntu_Mono, Ubuntu_Condensed } from "next/font/google";
+
+export const ubuntu = Ubuntu({
+  subsets: [
+    "cyrillic",
+    "cyrillic-ext",
+    "greek",
+    "greek-ext",
+    "latin",
+    "latin-ext",
+  ],
+  style: ["normal"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "700"],
+});
+
+export const ubuntuMono = Ubuntu_Mono({
+  subsets: [
+    "cyrillic",
+    "cyrillic-ext",
+    "greek",
+    "greek-ext",
+    "latin",
+    "latin-ext",
+  ],
+  style: ["normal"],
+  variable: "--font-sans",
+  weight: ["400", "700"],
+});
+
+export const ubuntuCondensed = Ubuntu_Condensed({
+  subsets: [
+    "cyrillic",
+    "cyrillic-ext",
+    "greek",
+    "greek-ext",
+    "latin",
+    "latin-ext",
+  ],
+  style: ["normal"],
+  variable: "--font-sans",
+  weight: ["400"],
+});
+
+```
+
+3. Import the font inside the project:
+
+In `pages/index.tsx` import these
+
+```tsx
+import { ubuntuMono } from "@/types/font/Font";
+import Head from "next/head";
+
+export default function Home() {
+ return (
+  <main className={`min-h-screen ${ubuntuMono.className}`}>
+   <Head>
+    <title>Home | Dashboard</title>
+    <meta name='description' content='Home | Dashboard' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+   </Head>
+   <div className={``}>
+    <h1 className='text-2xl text-center font-[600]'>
+     Welcome to Dashboard
+    </h1>
+    <div className="flex justify-center">
+     <Button>Click Me</Button>
+    </div>
+   </div>
+  </main>
+ );
+}
+
+```
+
+Then in `_document.tsx` insert the below lines:
+
+```tsx
+import { Html, Head, Main, NextScript } from "next/document";
+import { ubuntuMono as fontSans } from "@/types/font/Font";
+import { cn } from "@/lib/utils";
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
+      >
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+
+```
+
+This ensures that we have injected the font inside the project properly.
+
+### That's it
+
+You can now start adding components to your project.
+
+```sh
+npx shadcn-ui@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { ubuntuMono } from "@/types/font/Font";
+import Head from "next/head";
+
+export default function Home() {
+ return (
+  <main className={`min-h-screen ${ubuntuMono.className}`}>
+   <Head>
+    <title>Home | Dashboard</title>
+    <meta name='description' content='Home | Dashboard' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+   </Head>
+   <div className={``}>
+    <h1 className='text-2xl text-center font-[600]'>
+     Welcome to Dashboard
+    </h1>
+    <div className="flex justify-center">
+     <Button>Click Me</Button>
+    </div>
+   </div>
+  </main>
+ );
+}
+
+```
+
+### Prettier code formatter
+
+Formatting command:
+
+```sh
+npx prettier . --write
+or
+prettier . --write  ---use this only if prettier is installed locally inside the
+ project or globally inside node environment.
+```
+
+Checking command for unformatted files:
+
+```sh
+npx prettier . --check
+or
+prettier . --check  ---use this only if prettier is installed locally inside the
+ project or globally inside node environment.
+```
+
+### Layout (Pages router method)
+
+Let us understand how to declare custom type layouts in `NextJs`
