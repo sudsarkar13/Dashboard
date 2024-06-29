@@ -13,15 +13,33 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Head from "next/head";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "@/pages/api/users/API";
 
 const Login: React.FC = () => {
 	const emailref = React.useRef<HTMLInputElement>(null);
 	const passwordref = React.useRef<HTMLInputElement>(null);
 
+	const mutation = useMutation({
+		mutationFn: login,
+		onSuccess: () => {
+			// Handle success
+			console.log("Login successfull");
+		},
+		// onError: (error) => {
+		// 	// Handle error
+		// },
+	})
+
 	const handleLoginSubmit = () => {
 		const email = emailref.current?.value;
 		const password = passwordref.current?.value;
 		console.log("data", { email, password });
+
+		if (!email || !password) {
+			return alert("Please enter email and password");
+		}
+		mutation.mutate({ email, password });
 		// Make api/server call to login user
 	};
 
