@@ -20,7 +20,7 @@ After configuring the nextjs app settings these following processes will occur a
 Creating a new Next.js app in /DIR
 Using npm.
 
-Initializing project with template: default-tw 
+Initializing project with template: default-tw
 
 
 Installing dependencies:
@@ -88,47 +88,46 @@ And paste the following code:
 import { Ubuntu, Ubuntu_Mono, Ubuntu_Condensed } from "next/font/google";
 
 export const ubuntu = Ubuntu({
-  subsets: [
-    "cyrillic",
-    "cyrillic-ext",
-    "greek",
-    "greek-ext",
-    "latin",
-    "latin-ext",
-  ],
-  style: ["normal"],
-  variable: "--font-sans",
-  weight: ["300", "400", "500", "700"],
+ subsets: [
+  "cyrillic",
+  "cyrillic-ext",
+  "greek",
+  "greek-ext",
+  "latin",
+  "latin-ext",
+ ],
+ style: ["normal"],
+ variable: "--font-sans",
+ weight: ["300", "400", "500", "700"],
 });
 
 export const ubuntuMono = Ubuntu_Mono({
-  subsets: [
-    "cyrillic",
-    "cyrillic-ext",
-    "greek",
-    "greek-ext",
-    "latin",
-    "latin-ext",
-  ],
-  style: ["normal"],
-  variable: "--font-sans",
-  weight: ["400", "700"],
+ subsets: [
+  "cyrillic",
+  "cyrillic-ext",
+  "greek",
+  "greek-ext",
+  "latin",
+  "latin-ext",
+ ],
+ style: ["normal"],
+ variable: "--font-sans",
+ weight: ["400", "700"],
 });
 
 export const ubuntuCondensed = Ubuntu_Condensed({
-  subsets: [
-    "cyrillic",
-    "cyrillic-ext",
-    "greek",
-    "greek-ext",
-    "latin",
-    "latin-ext",
-  ],
-  style: ["normal"],
-  variable: "--font-sans",
-  weight: ["400"],
+ subsets: [
+  "cyrillic",
+  "cyrillic-ext",
+  "greek",
+  "greek-ext",
+  "latin",
+  "latin-ext",
+ ],
+ style: ["normal"],
+ variable: "--font-sans",
+ weight: ["400"],
 });
-
 ```
 
 3. Import the font inside the project:
@@ -151,14 +150,13 @@ export default function Home() {
     <h1 className='text-2xl text-center font-[600]'>
      Welcome to Dashboard
     </h1>
-    <div className="flex justify-center">
+    <div className='flex justify-center'>
      <Button>Click Me</Button>
     </div>
    </div>
   </main>
  );
 }
-
 ```
 
 Then in `_document.tsx` insert the below lines:
@@ -169,22 +167,21 @@ import { ubuntuMono as fontSans } from "@/types/font/Font";
 import { cn } from "@/lib/utils";
 
 export default function Document() {
-  return (
-    <Html lang="en">
-      <Head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+ return (
+  <Html lang='en'>
+   <Head />
+   <body
+    className={cn(
+     "min-h-screen bg-background font-sans antialiased",
+     fontSans.variable
+    )}
+   >
+    <Main />
+    <NextScript />
+   </body>
+  </Html>
+ );
 }
-
 ```
 
 This ensures that we have injected the font inside the project properly.
@@ -216,14 +213,13 @@ export default function Home() {
     <h1 className='text-2xl text-center font-[600]'>
      Welcome to Dashboard
     </h1>
-    <div className="flex justify-center">
+    <div className='flex justify-center'>
      <Button>Click Me</Button>
     </div>
    </div>
   </main>
  );
 }
-
 ```
 
 ### Prettier code formatter
@@ -246,6 +242,123 @@ prettier . --check  ---use this only if prettier is installed locally inside the
  project or globally inside node environment.
 ```
 
+### Creating your own @Types (Props, Interfaces, Types etc. )
+
+To create your own types we need to create a folder inside `@types` folder and create a new file inside that folder.
+
+For example: Let's create a `Font.ts` file inside `@types` folder, that calls font types from `next/font/google`.
+
+```ts
+// @types/font/Font.ts
+
+import { Ubuntu, Ubuntu_Mono, Ubuntu_Condensed } from "next/font/google";
+
+export const ubuntu = Ubuntu({
+ subsets: [
+  "cyrillic",
+  "cyrillic-ext",
+  "greek",
+  "greek-ext",
+  "latin",
+  "latin-ext",
+ ],
+ style: ["normal"],
+ variable: "--font-sans",
+ weight: ["300", "400", "500", "700"],
+});
+
+export const ubuntuMono = Ubuntu_Mono({
+ subsets: [
+  "cyrillic",
+  "cyrillic-ext",
+  "greek",
+  "greek-ext",
+  "latin",
+  "latin-ext",
+ ],
+ style: ["normal"],
+ variable: "--font-sans",
+ weight: ["400", "700"],
+});
+
+export const ubuntuCondensed = Ubuntu_Condensed({
+ subsets: [
+  "cyrillic",
+  "cyrillic-ext",
+  "greek",
+  "greek-ext",
+  "latin",
+  "latin-ext",
+ ],
+ style: ["normal"],
+ variable: "--font-sans",
+ weight: ["400"],
+});
+```
+
+Another example: Let's create a `Interface.ts` file inside `@types` folder, that calls props from `React`.
+
+```ts
+// Creating an interface prop type
+export interface RNChildProp {
+ children?: React.ReactNode;
+}
+
+// children is a special prop in React which is used to pass children
+// to a parent component between components.
+```
+
+```ts
+// Information about ReactNode
+type ReactNode = string | number | bigint | boolean | ReactElement<any, string |
+JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...> |
+null | undefined
+
+Represents all of the things React can render.
+
+Where ReactElement only represents JSX, ReactNode represents everything
+that can be rendered.
+```
+
 ### Layout (Pages router method)
 
 Let us understand how to declare custom type layouts in `NextJs`
+
+Suppose we are creating a dashboard we need some common components like header, footer, sidebar etc. to be fixated on few pages. We can use `NextJs` layout method to achieve this.
+
+We need to create a layout component for dashboard inside `components/layout` folder.
+
+```tsx
+// components/dashboard/DashboardLayout.tsx
+
+import React from "react";
+import { RNChildProp } from "@/types/interface/Interface";
+
+const DashboardLayout: React.FC<RNChildProp> = ({ children }: RNChildProp) => {
+ return (
+  <main>
+   <div>{children}</div>
+  </main>
+ );
+};
+
+export default DashboardLayout;
+```
+
+### Integrating layout with pages router (NextJs)
+
+Let us understand how to integrate layout with pages router in `NextJs`.
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
+
+export default function App({ Component, pageProps }: AppProps) {
+ return (
+  <Layout>
+   <Component {...pageProps} />
+  </Layout>
+ );
+}
+```
