@@ -1,0 +1,16 @@
+{
+  "name": "ebook-api",
+  "version": "1.0.0",
+  "description": "This is an ebook API project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "express"
+  ],
+  "author": "Sudeepta Sarkar <sudsarkar13@gmail.com>",
+  "license": "ISC"
+}
