@@ -7,7 +7,9 @@ const app = express();
 // API Endpoints: /users, /users/:id
 
 app.get("/", (req, res, next) => {
-	res.json({message: "Welcome to Ebook API's"});
+  res.json({ message: "Welcome to Ebook API's" });
+
+  next();
 });
 
 export default app;
