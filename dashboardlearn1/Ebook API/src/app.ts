@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import express from "express";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
+import userRouter from "./user/userRouter";
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.get("/", (req, res, next) => {
 	// throw error;
 	res.json({ message: "Welcome to Ebook API's" });
 });
+
+app.use("/api/users",userRouter);
 
 // Global error handler
 app.use(globalErrorHandler);
