@@ -4,6 +4,7 @@ import globalErrorHandler from "./middlewares/globalErrorHandler";
 import userRouter from "./user/userRouter";
 
 const app = express();
+app.use(express.json());
 
 // Routes
 // Http methods: GET, POST, PUT, PATCH, DELETE etc.
@@ -16,7 +17,7 @@ app.get("/", (req, res, next) => {
 	res.json({ message: "Welcome to Ebook API's" });
 });
 
-app.use("/api/users",userRouter);
+app.use("/api/users", userRouter);
 
 // Global error handler
 app.use(globalErrorHandler);
