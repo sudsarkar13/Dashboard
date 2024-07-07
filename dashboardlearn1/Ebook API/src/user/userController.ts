@@ -53,7 +53,34 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
 // login user
 const loginUser = async (req: Request, res: Response, next: NextFunction) => {
-	res.json({ message: "OK" });
+	const { email, password } = req.body;
+	// validation
+	if (!email || !password) {
+		const error = createHttpError(400, "All fields are required");
+		return next(error);
+	}
+	// database call
+	const user = await userModel.findOne({ email });
+	try {
+		if (!user) {
+			const error = createHttpError(404, "User does not exist.");
+			return next(error);
+		}
+		// password validation
+		const isMatch = await bcrypt.compare(password, user.password);
+		if (!isMatch) {
+			const error = createHttpError(401, "Invalid email or password");
+			return next(error);
+		}
+	} catch (err) {
+		return next(createHttpError(500, "Error while checking for existing user"));
+	}
+
+	// Login token generation
+	const token = sign({ sub: user._id }, config.jwtSecret as string, {
+		expiresIn: "7d",
+	});
+	res.json({ accessToken: token });
 };
 
 export { createUser, loginUser };
