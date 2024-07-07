@@ -7,6 +7,7 @@ import { sign } from "jsonwebtoken";
 import { config } from "../config/config";
 import { User } from "./userTypes";
 
+// create user
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
 	const { name, email, password } = req.body;
 	// validation
@@ -44,10 +45,15 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 			expiresIn: "7d",
 		});
 		// response
-		res.json({ accessToken: token });
+		res.status(201).json({ accessToken: token });
 	} catch (err) {
 		return next(createHttpError(500, "Error while signing the jwt token"));
 	}
 };
 
-export { createUser };
+// login user
+const loginUser = async (req: Request, res: Response, next: NextFunction) => {
+	res.json({ message: "OK" });
+};
+
+export { createUser, loginUser };
