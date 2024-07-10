@@ -12,10 +12,10 @@ app.use(express.json());
 // API Endpoints: /users, /users/:id
 
 app.get("/", (req, res, next) => {
-	// throw new Error("Something went wrong");
-	// const error = createHttpError(400, "Something went wrong");
-	// throw error;
-	res.json({ message: "Welcome to Ebook API's" });
+  // throw new Error("Something went wrong");
+  // const error = createHttpError(400, "Something went wrong");
+  // throw error;
+  res.json({ message: "Welcome to Ebook API's" });
 });
 
 app.use("/api/users", userRouter);
